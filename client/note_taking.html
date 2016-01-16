@@ -1,0 +1,46 @@
+<head>
+	<title>UKC Note Taking by Guillaume Lefrant</title>
+</head>
+
+<body>
+	{{> status}}
+	{{> tabs}}
+</body>
+
+<template name="tabs">
+	<!-- Nav tabs -->
+	<div id="left-panel">
+		<header>
+			UKC Note Taking
+		</header>
+
+		<ul class="nav nav-pills nav-stacked" role="tablist">
+			{{#each module}}
+			<li role="presentation">
+				<a href="#{{code}}" data-id="{{_id}}" aria-controls="{{code}}" role="tab" data-toggle="tab" style="color: {{color}}">
+					{{name}}
+					<br />
+					<small>{{code}}</small>
+				</a>
+			</li>
+			{{/each}}
+		</ul>
+
+		<footer>
+			{{message}}
+		</footer>
+	</div>
+
+	<!-- Tab panes -->
+	<div id="right-panel">
+		<div class="tab-content">
+			{{#each module}}
+			<div role="tabpanel" class="tab-pane" id="{{code}}">
+				<h2 class="page-header">{{name}}</h2>
+				<br />
+				{{> content}}
+			</div>
+			{{/each}}
+		</div>
+	</div>
+</template>
